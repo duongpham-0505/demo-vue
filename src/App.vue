@@ -1,14 +1,29 @@
 <template>
   <div class="list-view">
-    <UserList />
-  </div>
+    <UserUpdate v-if="showComponent"/>
+
+    <button @click="toggleComponent">Deptroy</button></div>
 </template>
 
 <script>
-  import UserList from './components/UserList.vue';
+  // import UserList from './components/UserList.vue';
+  import UserUpdate from './components/UserFormUpdate.vue'; 
 
   export default {
-    components: { UserList }
+    components: { 
+      // UserList 
+      UserUpdate
+    },
+    data() {
+    return {
+      showComponent: true
+    };
+  },
+    methods: {
+      toggleComponent() {
+        this.showComponent = !this.showComponent;
+      }
+    }
   };
 </script>
 

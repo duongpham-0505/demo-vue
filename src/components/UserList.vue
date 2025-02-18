@@ -2,21 +2,22 @@
     <div class="user-list">
 
         <UserForm @add-user="addUser" />
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
+        <table class="table table-striped table-bordered ">
+            <thead class="thead-dark ">
                 <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Actions</th>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(user, index) in users" :key="user.id">
-                    <td>{{ index + 1 }}</td>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>
+                    <td class="text-center">{{ index + 1 }}</td>
+                    <td class="text-center">{{ user.name }}</td>
+                    <td class="text-center">{{ user.email }}</td>
+                    <td class="text-center">
+                        <button class="btn btn-warning btn-sm actions" @click="editUser(user.id)">Edit</button>
                         <button class="btn btn-danger btn-sm" @click="removeUser(user.id)">Delete</button>
                     </td>
                 </tr>
@@ -27,7 +28,8 @@
 
 <script>
     import { fetchUsers, addUser, deleteUser } from '../services/api';
-    import UserForm from './UserForm.vue';
+    import UserForm from './UserFormAdd.vue';
+    import Swal from 'sweetalert2';
 
     export default {
         components: { UserForm },
@@ -41,10 +43,25 @@
         },
         methods: {
             async addUser(newUser) {
-                const addedUser = await addUser(newUser);
-                this.users.push(addedUser);
+                try {
+                    const addedUser = await addUser(newUser);
+                    console.log(addedUser);
+                    if (addedUser === null || Object.keys(addedUser).length === 0) {
+                        Swal.fire('Error!', 'User added can not successfully!', 'error');
+                    } else {
+                        this.users.push(addedUser);
+                        Swal.fire('Success!', 'User added successfully!', 'success');
+                    }
+                } catch (error) {
+                    Swal.fire('Error!', 'An error occurred while adding the user. Please try again later.', 'error');
+                    alert('An error occurred while adding the user. Please try again later.');
+                }
             },
             async removeUser(userId) {
+                await deleteUser(userId);
+                this.users = this.users.filter(user => user.id !== userId);
+            },
+            async editUser(userId) {
                 await deleteUser(userId);
                 this.users = this.users.filter(user => user.id !== userId);
             }
@@ -86,5 +103,14 @@
 
     .tilte-user_list {
         text-align: center;
+    }
+
+    .actions {
+        margin-right: 15px;
+        background-color: rgb(193, 193, 53);
+    }
+
+    td button {
+        width: 70px;
     }
 </style>

@@ -16,6 +16,12 @@ export async function addUser(user) {
   return await response.json();
 }
 
+export async function deleteUpdate(userId) {
+  await fetch(`${API_URL}/${userId}`, {
+    method: 'PUT'
+  });
+}
+
 export async function deleteUser(userId) {
   await fetch(`${API_URL}/${userId}`, {
     method: 'DELETE'
