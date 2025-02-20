@@ -1,21 +1,18 @@
 <template>
   <div class="list-view">
-    <!-- <LifeCycleDemo v-if="showComponent"/> -->
-    <DemoUpdated /> 
+    <LifeCycleDemo v-if="showComponent"/>
     <!-- <button class="toggle" @click="toggleComponent">Deptroy</button> -->
   </div>
 </template>
 
 <script>
   // import UserList from './components/UserList.vue';
-  // import LifeCycleDemo from './lifecycle/lifecycle.vue'; 
-  import DemoUpdated from './lifecycle/demoUpdated.vue';
+  import LifeCycleDemo from './lifecycle/lifecycle.vue'; 
 
   export default {
     components: { 
       // UserList 
-      // LifeCycleDemo,
-      DemoUpdated
+      LifeCycleDemo
     },
     data() {
     return {

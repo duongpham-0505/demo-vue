@@ -23,8 +23,8 @@
                 </thead>
                 <tbody>
                     <tr v-if="updatedUser">
-                        <td class="text-center">{{ updatedUser.name }}</td>
-                        <td class="text-center">{{ updatedUser.email }}</td>
+                        <td class="text-center userRender">{{ updatedUser.name }}</td>
+                        <td class="text-center emailRender">{{ updatedUser.email }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -53,7 +53,7 @@ export default {
                 const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${this.userId}`);
                 this.user.name = response.data.name;
                 this.user.email = response.data.email;
-                console.log('fetchUserData: đã fetch dữ liệu user thành công.', response.data);
+                // console.log('fetchUserData: đã fetch dữ liệu user thành công.', response.data);
             } catch (e) {
                 console.error('Error fetching user data:', e);
             }
@@ -62,7 +62,7 @@ export default {
             try {
                 const response = await axios.put(`https://jsonplaceholder.typicode.com/users/${this.userId}`, this.user);
                 this.updatedUser = response.data;
-                console.log('updateUser: updatedUser =', this.updatedUser);
+                // console.log('updateUser: updatedUser =', this.updatedUser);
             } catch (error) {
                 console.error('Error updating user:', error);
             }
@@ -70,12 +70,12 @@ export default {
     },
     beforeCreate() {
         console.log('beforeCreate: Component đang trong quá trình khởi tạo.');
-        console.log('beforeCreate: Không thể truy cập data, methods, computed properties -> response : ' + this.user);
+        console.log('beforeCreate: Không thể truy cập data, methods, computed properties -> response : ' + this.$el);
     },
     created() {
         console.log('created: Component đã được khởi tạo nhưng chưa gắn vào DOM.');
         this.fetchUserData();
-        console.log('created: Đã fetch dữ liệu user. -> response :' + this.user);
+        console.log('created: Đã fetch dữ liệu user. -> response :' + this.$el);
     },
     beforeMount() {
         console.log('beforeMount: dữ liệu đã được gắn vào DOM nhưng chưa được render ra giao diện.');
@@ -86,12 +86,26 @@ export default {
         console.log('mounted: Có thể truy cập các phần tử trong DOM. -> response', this.$el);
     },
     beforeUpdate() {
-        console.log('beforeUpdate: Component sắp cập nhật DOM.');
-        console.log('beforeUpdate: trước khi cập nhật DOM dữ liệu user cũ : ', this.user, '  : response mới : ', this.updatedUser);
+        // console.log('beforeUpdate: Component sắp cập nhật DOM.');
+        // console.log('beforeUpdate: trước khi cập nhật DOM dữ liệu user cũ : ', this.$el);
+        const userElement = document.querySelector(".userRender");
+        const emailElement = document.querySelector(".emailRender");
+        if (userElement && emailElement) {
+            console.log('beforeUpdate: Trước khi cập nhật DOM dữ liệu user cũ: ', userElement.textContent, ' : email cũ : ', emailElement.textContent);
+        } else {
+            console.log('beforeUpdate: Elements not found');
+        }
     },
     updated() {
-        console.log('updated: DOM đã được cập nhật với dữ liệu mới.');
-        console.log('updated: Sau khi cập nhật DOM dữ liệu user cũ : ', this.user, ' response mới :', this.updatedUser);
+        // console.log('updated: DOM đã được cập nhật với dữ liệu mới.');
+        // console.log('updated: Sau khi cập nhật DOM dữ liệu user cũ : ', this.$el);
+        const userElement = document.querySelector(".userRender");
+        const emailElement = document.querySelector(".emailRender");
+        if (userElement && emailElement) {
+            console.log('updated: Sau khi cập nhật DOM dữ liệu user mới: ', userElement.textContent, ' : email mới: ', emailElement.textContent);
+        } else {
+            console.log('updated: Elements not found');
+        }
     },
     beforeUnmount() {
         console.log('beforeUnmount: Component sắp bị xóa khỏi DOM.');
