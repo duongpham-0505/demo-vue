@@ -69,21 +69,21 @@ export default {
         }
     },
     beforeCreate() {
-        // console.log('beforeCreate: Component đang trong quá trình khởi tạo.');
-        // console.log('beforeCreate: Không thể truy cập data, methods, computed properties -> response : ' + this.$el);
+        console.log('beforeCreate: Component đang trong quá trình khởi tạo.');
+        console.log('beforeCreate: Không thể truy cập data, methods, computed properties -> response : ' + this.$el);
     },
     created() {
-        // console.log('created: Component đã được khởi tạo nhưng chưa gắn vào DOM.');
+        console.log('created: Component đã được khởi tạo nhưng chưa gắn vào DOM.');
         this.fetchUserData();
-        // console.log('created: Đã fetch dữ liệu user. -> response :' + this.$el);
+        console.log('created: Đã fetch dữ liệu user. -> response :' + this.$el);
     },
     beforeMount() {
-        // console.log('beforeMount: dữ liệu đã được gắn vào DOM nhưng chưa được render ra giao diện.');
-        // console.log('beforeMount: Không thể truy cập các phần tử trong DOM. -> response : ', this.$el);
+        console.log('beforeMount: dữ liệu đã được gắn vào DOM nhưng chưa được render ra giao diện.');
+        console.log('beforeMount: Không thể truy cập các phần tử trong DOM. -> response : ', this.$el);
     },
     mounted() {
-        // console.log('mounted: Component đã được gắn vào DOM và đã render ra giao diện.');
-        // console.log('mounted: Có thể truy cập các phần tử trong DOM. -> response', this.$el);
+        console.log('mounted: Component đã được gắn vào DOM và đã render ra giao diện.');
+        console.log('mounted: Có thể truy cập các phần tử trong DOM. -> response', this.$el);
     },
     beforeUpdate() {
         // console.log('beforeUpdate: Component sắp cập nhật DOM.');
@@ -108,12 +108,12 @@ export default {
         }
     },
     beforeUnmount() {
-        // console.log('beforeUnmount: Component sắp bị xóa khỏi DOM.');
-        // console.log('beforeUnmount: Có thể thực hiện các công việc dọn dẹp trước khi component bị xóa. -> response : ', this.updatedUser);
+        console.log('beforeUnmount: Component sắp bị xóa khỏi DOM.');
+        console.log('beforeUnmount: Có thể thực hiện các công việc dọn dẹp trước khi component bị xóa. -> response : ', this.updatedUser);
     },
     unmounted() {
-        // console.log('unmounted: Component đã bị xóa khỏi DOM.');
-        // console.log('unmounted: Không thể truy cập các phần tử trong DOM. -> response : ', this.updatedUser);
+        console.log('unmounted: Component đã bị xóa khỏi DOM.');
+        console.log('unmounted: Không thể truy cập các phần tử trong DOM. -> response : ', this.updatedUser);
     }
 };
 </script>
