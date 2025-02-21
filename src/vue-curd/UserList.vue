@@ -22,7 +22,7 @@
                     <td class="text-center">{{ user.phone }}</td>
                     <td class="text-center">
                         <button class="btn btn-primary w-70" @click="editUser(user)">Update</button>
-                        <button class="btn btn-primary w-70" @click="deleteUser(user.id)">Delete</button>
+                        <button class="btn w-70 action-delete" @click="deleteUser(user.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>

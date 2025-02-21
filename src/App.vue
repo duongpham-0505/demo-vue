@@ -1,26 +1,21 @@
 <template>
-  <div class="list-view">
-     <UserList />
+  <div id="app">
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/lifeCycle">Lifecycle</router-link> |
+      <router-link to="/manageUser">Manage User</router-link>
+    </nav>
+
+    <div class="list-view">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <script>
-import UserList from './vue-curd/UserList.vue';
-  export default {
-    components: { 
-      UserList
-    },
-    data() {
-    return {
-      showComponent: true
-    };
-  },
-    methods: {
-      toggleComponent() {
-        this.showComponent = !this.showComponent;
-      }
-    }
-  };
+export default {
+  name: "App",
+};
 </script>
 
 <style>
