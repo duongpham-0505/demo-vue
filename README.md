@@ -70,3 +70,33 @@ Computed Properties (computed)
 Watchers (watch)
     Định nghĩa: Watchers là các hàm giám sát (watch) các thuộc tính dữ liệu reactive hoặc các computed properties và thực hiện các hành động khi các thuộc tính đó thay đổi.
     Khi nào nên sử dụng: Sử dụng watchers khi bạn cần thực hiện các tác vụ phức tạp hoặc bất đồng bộ dựa trên sự thay đổi của dữ liệu.
+
+- Promise : 
++ Khái niệm : là đối tượng trong js và đại diện cho một action bất đồng bộ
++ Mô tả : Promise sẽ có 3 trạng thái : pending, resolve, reject
++ resolve(): Gọi khi thao tác thành công.
++ reject(): Gọi khi có lỗi.
++ .then() để xử lý khi Promise thành công.
++ .catch() để xử lý khi có lỗi.
+-> trước khi có Promise thì JS sử dụng callback để thực hiện cơ chế bất đồng bộ dẫn đến code sẽ bị lồng nhau và khó đọc 
+-> có thể sử lý đồng thời nhiều request cùng lúc và đợi khi tất cả cùng hoàn thành 
+    + Promise.all() : Khi tất cả hoàn thành (nếu có 1 req bị reject thì tất cả sẽ bị đánh dấu là reject)
+    + Promise.race() : Lấy kết quả xử lý nhanh nhất 
+    + Promise.allSettled() : lấy tất cả kể cả những req bị reject
+    + Promise.any() : Chỉ cần 1 req thành công thì sẽ thành công
+- Async/Await 
++ async : được sử dụng trên hàm và được hiểu nó là một hàm bất đồng bộ
++ await : được sử dụng bên trong hàm async giúp cho nó được chạy đồng bộ trong hàm.
+-> cách tối ưu khi hàm đó sử dụng nhiều await thì thay thế bằng 
+async function loadData() {
+    let [user, posts] = await Promise.all([fetchUser(), fetchPosts()]);
+    console.log(user, posts);
+}
+
+
+bài tập 2: Tạo CURD 
+
+- Tạo Template - View hiển thị trên giao
+- Tạo các action thể hiện thêm/sửa hoặc xóa các chức năng
+- Tạo các function xử lý các sự kiện
+- Tạo css

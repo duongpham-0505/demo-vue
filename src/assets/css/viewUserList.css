@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.title-add_user {
+    color: green;
+}
+.title-update_user {
+    color: blue;
+}
+.user-list {
+    color: red;
+}
+
+.form-add_user {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+.form-add_user div {
+    margin-bottom: 10px;
+}
+.form-add_user label {
+    width: 100px;
+}   
+.form-add_user input {
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.form-add_user input:focus {
+    outline: none;
+}
+.form-add_user button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
